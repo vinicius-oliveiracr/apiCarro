@@ -4,16 +4,16 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const {router} = require('./routes');
+const routes = require('./routes');
 
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
 
-//server.use(routes);
+server.use('/api', routes);
 
 server.listen(port, ()=> {
     console.log(`Servidor rodando em: http://localhost:${port}`);
 })
 
-server.use(router)
+//server.use(router)
